@@ -9,6 +9,7 @@ public class Order
     public int TotalPrice { get; set; }
 
     public ICollection<OrderRow> OrderRows { get; set; }
+
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
 }
