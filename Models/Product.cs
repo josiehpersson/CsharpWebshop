@@ -10,4 +10,5 @@ public class Product
     public string Image { get; set; }
     public int Price { get; set; }
 
+    public ICollection<OrderRow> OrderRows { get; set; }
 }

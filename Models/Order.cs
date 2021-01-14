@@ -8,4 +8,6 @@ public class Order
     public DateTime Created { get; set; }
     public int orderRows { get; set; }
     public int TotalPrice { get; set; }
+
+    public ICollection<OrderRow> OrderRows { get; set; }
 }

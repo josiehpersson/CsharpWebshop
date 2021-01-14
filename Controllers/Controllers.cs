@@ -53,6 +53,13 @@ namespace dotnetwebshop.Controllers
         {
             return new List<Customer>();
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<Customer> GetById(int id)
+        {
+            return await _context.Customers.FindAsync(id);
+        }
     }
 
     [ApiController]
@@ -84,9 +91,17 @@ namespace dotnetwebshop.Controllers
             return new List<Order>();
         }
 
+                [HttpGet]
+        [Route("{id}")]
+        public async Task<Order> GetById(int id)
+        {
+            return await _context.Orders.FindAsync(id);
+        }
+
         [HttpPost]
         public async Task<Order> CreateOrder(Order newOrder)
         {
+            newOrder.Created = DateTime.Now;
             _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
 
