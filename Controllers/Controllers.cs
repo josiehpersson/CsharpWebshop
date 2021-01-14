@@ -46,12 +46,14 @@ namespace dotnetwebshop.Controllers
     {
     private readonly ProductContext _context;
 
-        public CustomerController() { }
+        public CustomerController(ProductContext context) {
+            _context = context;
+        }
 
         [HttpGet]
-        public List<Customer> GetCustomers()
+        public async Task<ActionResult> GetCustomers()
         {
-            return new List<Customer>();
+            return Ok(await _context.Customers.Include(c => c.Orders).ToListAsync());
         }
 
         [HttpGet]
@@ -91,7 +93,7 @@ namespace dotnetwebshop.Controllers
             return new List<Order>();
         }
 
-                [HttpGet]
+        [HttpGet]
         [Route("{id}")]
         public async Task<Order> GetById(int id)
         {
