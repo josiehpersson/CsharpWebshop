@@ -4,8 +4,9 @@
     "\\Contexts",
     "\\Controllers",
     "\\Db",
+    "\\Mappings",
     "\\Models"
   ],
-  "SelectedNode": "\\Controllers\\Controllers.cs",
+  "SelectedNode": "\\Mappings\\AutoMapping.cs",
   "PreviewInSolutionExplorer": false
 }

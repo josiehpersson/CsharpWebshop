@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 namespace dotnetwebshop
 {
@@ -33,6 +34,13 @@ namespace dotnetwebshop
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetwebshop", Version = "v1" });
             });
+
+            MapperConfiguration config =new MapperConfiguration(mc=>{
+            mc.AddProfile(new AutoMapping());
+            });
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
 
         }
 

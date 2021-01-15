@@ -116,6 +116,16 @@ namespace dotnetwebshop.Controllers
 
             return Ok(orderRowDTOs);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateOrderRow(OrderRowDTO newOrderRowDTO) {
+        OrderRow newOrderRow = _mapper.Map<OrderRow>(newOrderRowDTO);
+
+            _context.OrderRows.Add(newOrderRow);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("CreateOrderRow", newOrderRow);
+        }
     }
 
     [ApiController]
