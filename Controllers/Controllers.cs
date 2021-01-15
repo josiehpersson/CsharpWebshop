@@ -51,8 +51,6 @@ namespace dotnetwebshop.Controllers
         }
     }
 
-    //FUNKAR, MIGRERAT! 
-
     [ApiController]
     [Route("[controller]")]
     public class CustomerController : ControllerBase
@@ -97,7 +95,6 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateCustomer", newCustomer);
         }
     }
-    //FUNKAR, MIGRERAT
 
     [ApiController]
     [Route("[controller]")]
@@ -126,30 +123,45 @@ namespace dotnetwebshop.Controllers
     public class OrderController : ControllerBase
     {
         private readonly ProductContext _context;
+        private readonly IMapper _mapper;
 
-        public OrderController() { }
+        public OrderController(ProductContext context, IMapper mapper) {
+        _context = context;
+            _mapper = mapper;
+        }
 
         [HttpGet]
-        public List<Order> GetOrders()
+        public async Task<ActionResult> GetOrders()
         {
-            return new List<Order>();
+            List<Order> orders = await _context.Orders.Include(o=> o.Customer).ToListAsync();
+            List<OrderDTO> orderDTOs = _mapper.Map<List<OrderDTO>>(orders);
+
+            return Ok(orderDTOs);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Order> GetById(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            return await _context.Orders.FindAsync(id);
+            Order found = await _context.Orders.FindAsync(id);
+
+            if(found == null){
+            
+            return NotFound();
+            }
+
+            return Ok(_mapper.Map<OrderDTO>(found));
         }
 
         [HttpPost]
-        public async Task<Order> CreateOrder(Order newOrder)
+        public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
+            Order newOrder = _mapper.Map<Order>(newOrderDTO);
             newOrder.Created = DateTime.Now;
             _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
 
-            return newOrder;
+            return CreatedAtAction("CreateOrder", newOrder);
         }
 
 
