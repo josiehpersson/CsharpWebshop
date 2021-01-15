@@ -62,3 +62,4 @@ C:\Users\Josep\OneDrive\Desktop\Frontend utvecklare\Backend\Inlämningsuppgift\d
 C:\Users\Josep\OneDrive\Desktop\Frontend utvecklare\Backend\Inlämningsuppgift\dotnetwebshop\obj\Debug\net5.0\ref\dotnetwebshop.dll
 C:\Users\Josep\OneDrive\Desktop\Frontend utvecklare\Backend\Inlämningsuppgift\dotnetwebshop\obj\Debug\net5.0\dotnetwebshop.pdb
 C:\Users\Josep\OneDrive\Desktop\Frontend utvecklare\Backend\Inlämningsuppgift\dotnetwebshop\obj\Debug\net5.0\dotnetwebshop.genruntimeconfig.cache
+C:\Users\Josep\OneDrive\Desktop\Frontend utvecklare\Backend\Inlämningsuppgift\dotnetwebshop\bin\Debug\net5.0\AutoMapper.dll

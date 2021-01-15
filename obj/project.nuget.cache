@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Xj1MGYwoDEcMI4ld4G72pqY1iWGPiJ/L8tdWtoTMHURWwOoiDhcOm+M7b4eMKy6nzLN1QJxruFVF244ruQ/VCw==",
+  "dgSpecHash": "wm3bCMHfbqX0HewpNZ03Pm7FQjmK/eybWjuki4IL0V3EK4JD1Np7GKwvqZFC9aP0UAHZSodb++J7wDU6ufIwlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Josep\\OneDrive\\Desktop\\Frontend utvecklare\\Backend\\Inlämningsuppgift\\dotnetwebshop\\dotnetwebshop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Josep\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.1\\microsoft.aspnetcore.authentication.openidconnect.5.0.1.nupkg.sha512",
@@ -47,6 +48,7 @@
     "C:\\Users\\Josep\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Josep\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Josep\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
