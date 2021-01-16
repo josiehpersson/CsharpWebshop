@@ -23,11 +23,14 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             .HasKey(or => new { or.OrderId, or.ProductId });
         modelBuilder.Entity<OrderRow>()
             .HasOne(or => or.Product)
-            .WithMany(p => p.OrderRows)
-            .HasForeignKey(or => or.ProductId);
+            .WithMany(p => p.OrderRows);
+           //.HasForeignKey(or => or.ProductId);
         modelBuilder.Entity<OrderRow>()
             .HasOne(or => or.Order)
             .WithMany(o => o.OrderRows)
-            .HasForeignKey(or => or.OrderId);
+            .HasForeignKey(or => new {or.OrderId, or.ProductId});
+        modelBuilder.Entity<Order>()
+            .HasOne(o=> o.Customer)
+            .WithMany(c=> c.Orders);
     }
 }
