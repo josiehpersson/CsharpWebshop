@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace dotnetwebshop.Controllers
 {
@@ -49,14 +49,26 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
+            //Customer customer = new Customer();
             Order newOrder = _mapper.Map<Order>(newOrderDTO);
-            newOrder.Created = DateTime.Now;
+            //int custId = await CreateCustomer(newOrderDTO.CustomerDTO);
+            newOrder.Created = DateTime.Now; 
+            //newOrder.CustomerId = customer.Id;
 
              _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("CreateOrder", newOrder);
-
         }
+
+        public async Task<int>CreateCustomer(CustomerDTO newCustomerDTO) {
+        Customer newCustomer = new Customer() {
+        Name = newCustomerDTO.Name
+        };
+            _context.Customers.Add(newCustomer);
+            await _context.SaveChangesAsync();
+            return newCustomer.Id;
+        }
+
     }
 }

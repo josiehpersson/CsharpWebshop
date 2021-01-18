@@ -48,6 +48,7 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateCustomer(CustomerDTO newCustomerDTO)
         {
+
             Customer newCustomer = _mapper.Map<Customer>(newCustomerDTO);
 
             _context.Customers.Add(newCustomer);
