@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dotnetwebshop.Controllers
 {
+
+    //PRODUCT
+
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase
@@ -50,6 +53,8 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateProduct", newProduct);
         }
     }
+
+    //CUSTOMER
 
     [ApiController]
     [Route("[controller]")]
@@ -96,6 +101,9 @@ namespace dotnetwebshop.Controllers
         }
     }
 
+
+    //ORDERROW
+
     [ApiController]
     [Route("[controller]")]
     public class OrderRowController : ControllerBase
@@ -127,6 +135,9 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateOrderRow", newOrderRow);
         }
     }
+
+
+    //ORDER
 
     [ApiController]
     [Route("[controller]")]
