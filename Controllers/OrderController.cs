@@ -49,11 +49,12 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
-            //Customer customer = new Customer();
+            Customer customer = new Customer();
+            int custId = await CreateCustomer(newOrderDTO.CustomerDTO);
             Order newOrder = _mapper.Map<Order>(newOrderDTO);
-            //int custId = await CreateCustomer(newOrderDTO.CustomerDTO);
+            newOrder.Customer = customer;
             newOrder.Created = DateTime.Now; 
-            //newOrder.CustomerId = customer.Id;
+            newOrder.CustomerId = custId;
 
              _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
@@ -61,9 +62,14 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateOrder", newOrder);
         }
 
-        public async Task<int>CreateCustomer(CustomerDTO newCustomerDTO) {
-        Customer newCustomer = new Customer() {
-        Name = newCustomerDTO.Name
+        public async Task<int>CreateCustomer(CustomerDTO newCustomerDTO) 
+        {
+        Customer newCustomer = new Customer() 
+        {
+        Name = newCustomerDTO.Name,
+        Address = newCustomerDTO.Address,
+        ZipCode = newCustomerDTO.ZipCode,
+        City = newCustomerDTO.City
         };
             _context.Customers.Add(newCustomer);
             await _context.SaveChangesAsync();
