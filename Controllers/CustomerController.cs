@@ -44,6 +44,7 @@ namespace dotnetwebshop.Controllers
 
             return Ok(_mapper.Map<CustomerDTO>(found));
         }
+        /*
 
         [HttpPost]
         public async Task<ActionResult> CreateCustomer(CustomerDTO newCustomerDTO)
@@ -57,5 +58,6 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateCustomer", newCustomer);
 
         }
+        */
     }
 }

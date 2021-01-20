@@ -49,10 +49,8 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
-            Customer customer = new Customer();
             int custId = await CreateCustomer(newOrderDTO.CustomerDTO);
             Order newOrder = _mapper.Map<Order>(newOrderDTO);
-            newOrder.Customer = customer;
             newOrder.Created = DateTime.Now; 
             newOrder.CustomerId = custId;
 
