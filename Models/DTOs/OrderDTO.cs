@@ -7,6 +7,7 @@ public class OrderDTO
     public DateTime Created { get; set; }
     public int TotalPrice { get; set; }
 
+    //public List<OrderRow> OrderRows {get; set;}
     //public ICollection<OrderRowDTO> OrderRows {get; set;}
 
     public int CustomerId {get; set;}

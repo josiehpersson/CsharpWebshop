@@ -9,5 +9,6 @@ public class CustomerDTO
     public int ZipCode {get; set;}
     public string City { get; set; }
 
+    //public List<Order> Order {get; set;}
     //public ICollection<OrderDTO> OrderDTO { get; set; }
 }

@@ -10,5 +10,6 @@ public class ProductDTO
     public string Image { get; set; }
     public int Price { get; set; }
 
+    //public List<OrderRow> OrderRows {get; set;}
     //public ICollection<OrderRowDTO> OrderRowsDTO { get; set; }
 }
