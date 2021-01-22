@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace dotnetwebshop.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20210122125535_init2")]
-    partial class init2
+    [Migration("20210122144006_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
