@@ -49,10 +49,10 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
-            int custId = await CreateCustomer(newOrderDTO.CustomerDTO);
+            Customer cust = await CreateCustomer(newOrderDTO.CustomerDTO);
             Order newOrder = _mapper.Map<Order>(newOrderDTO);
             newOrder.Created = DateTime.Now; 
-            newOrder.CustomerId = custId;
+            newOrder.CustomerId = cust.Id;
 
              _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
@@ -60,7 +60,7 @@ namespace dotnetwebshop.Controllers
             return CreatedAtAction("CreateOrder", newOrder);
         }
 
-        public async Task<int>CreateCustomer(CustomerDTO newCustomerDTO) 
+        public async Task<Customer>CreateCustomer(CustomerDTO newCustomerDTO) 
         {
         Customer newCustomer = new Customer() 
         {
@@ -71,8 +71,22 @@ namespace dotnetwebshop.Controllers
         };
             _context.Customers.Add(newCustomer);
             await _context.SaveChangesAsync();
-            return newCustomer.Id;
+            return newCustomer;
         }
+/*
+    public async Task<OrderRow>CreateOrderRow(OrderRowDTO newOrderRowDTO) 
+    {
+        OrderRow newOrderRow = new OrderRow();
+        {
+        ProductId = newOrderRowDTO.ProductId;
+        OrderId = newOrderRowDTO.OrderId;
+        };
+        _context.OrderRows.Add(newOrderRow);
+        await _context.SaveChangesAsync();
+        return newOrderRow;
 
     }
+*/
+     }
+
 }

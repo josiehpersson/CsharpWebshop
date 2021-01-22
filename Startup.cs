@@ -17,6 +17,7 @@ namespace dotnetwebshop
 {
     public class Startup
     {
+        private string corsPolicyName = "myAwesomePolicy"; //cors-policy
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +28,13 @@ namespace dotnetwebshop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+            options.AddPolicy(corsPolicyName,builder => {
+            builder
+                .WithOrigins("https://localhost:3001","http://localhost:3000") //accepted URL's
+                .WithMethods("GET","POST"); //accepted methods
+            });
+            });
 
             services.AddDbContext<ProductContext>();
             services.AddControllers();
@@ -40,6 +48,8 @@ namespace dotnetwebshop
             });
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+            
 
 
         }
@@ -57,6 +67,8 @@ namespace dotnetwebshop
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(corsPolicyName); //use corse, use our policy
 
             app.UseAuthorization();
 
