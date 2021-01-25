@@ -50,15 +50,19 @@ namespace dotnetwebshop.Controllers
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
             Customer cust = await CreateCustomer(newOrderDTO.CustomerDTO);
-
+            CustomerDTO custD = _mapper.Map<CustomerDTO>(cust);
             Order newOrder = _mapper.Map<Order>(newOrderDTO);
             newOrder.Created = DateTime.Now; 
             newOrder.CustomerId = cust.Id;
+            //newOrder.Customer = cust;
 
              _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("CreateOrder", newOrder);
+            OrderDTO newOrderD = _mapper.Map<OrderDTO>(newOrder);
+            newOrderD.CustomerDTO = custD;
+
+            return CreatedAtAction("CreateOrder", newOrderD);
         }
 
         public async Task<Customer>CreateCustomer(CustomerDTO newCustomerDTO) 
@@ -72,6 +76,7 @@ namespace dotnetwebshop.Controllers
         };
             _context.Customers.Add(newCustomer);
             await _context.SaveChangesAsync();
+
             return newCustomer;
         }
 /*

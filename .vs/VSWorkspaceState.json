@@ -4,10 +4,10 @@
     "\\Contexts",
     "\\Controllers",
     "\\Db",
-    "\\Mappings",
+    "\\Migrations",
     "\\Models",
     "\\Models\\DTOs"
   ],
-  "SelectedNode": "\\Models\\DTOs\\OrderRowDTO.cs",
+  "SelectedNode": "\\Models",
   "PreviewInSolutionExplorer": false
 }
