@@ -25,7 +25,10 @@ namespace dotnetwebshop.Controllers
         [HttpGet]
         public async Task<ActionResult> GetOrders()
         {
-            List<Order> orders = await _context.Orders.Include(o => o.Customer).ToListAsync();
+            List<Order> orders = await _context.Orders
+                .Include(o => o.Customer)
+                .Include(o => o.OrderRows)
+                .ToListAsync();
             List<OrderDTO> orderDTOs = _mapper.Map<List<OrderDTO>>(orders);
 
             return Ok(orderDTOs);
@@ -79,20 +82,7 @@ namespace dotnetwebshop.Controllers
 
             return newCustomer;
         }
-/*
-    public async Task<OrderRow>CreateOrderRow(OrderRowDTO newOrderRowDTO) 
-    {
-        OrderRow newOrderRow = new OrderRow();
-        {
-        ProductId = newOrderRowDTO.ProductId;
-        OrderId = newOrderRowDTO.OrderId;
-        };
-        _context.OrderRows.Add(newOrderRow);
-        await _context.SaveChangesAsync();
-        return newOrderRow;
 
-    }
-*/
      }
 
 }
