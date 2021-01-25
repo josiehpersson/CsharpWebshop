@@ -4,10 +4,10 @@
     "\\Contexts",
     "\\Controllers",
     "\\Db",
-    "\\Migrations",
+    "\\Mappings",
     "\\Models",
     "\\Models\\DTOs"
   ],
-  "SelectedNode": "\\Models",
+  "SelectedNode": "\\Models\\DTOs\\ProductDTO.cs",
   "PreviewInSolutionExplorer": false
 }
