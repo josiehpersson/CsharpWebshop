@@ -8,7 +8,8 @@ public class OrderDTO
     public int TotalPrice { get; set; }
 
     //public List<OrderRow> OrderRows {get; set;}
-    //public ICollection<OrderRowDTO> OrderRows {get; set;}
+    public ICollection<OrderRowDTO> OrderRows {get; set;}
+   // public OrderRowDTO OrderRowDTO {get; set;}
 
     public int CustomerId {get; set;}
     public CustomerDTO CustomerDTO{ get; set; }

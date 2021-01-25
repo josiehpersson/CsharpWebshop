@@ -52,20 +52,67 @@ namespace dotnetwebshop.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateOrder(OrderDTO newOrderDTO)
         {
-            Customer cust = await CreateCustomer(newOrderDTO.CustomerDTO);
-            CustomerDTO custD = _mapper.Map<CustomerDTO>(cust);
-            Order newOrder = _mapper.Map<Order>(newOrderDTO);
+            Customer cust = await CreateCustomer(newOrderDTO.CustomerDTO); 
+            //anropar metoden som skapar en customer
+            CustomerDTO custD = _mapper.Map<CustomerDTO>(cust); 
+            //automappar objektet vi hämtat in från CreateCustomer
+
+            Order newOrder = _mapper.Map<Order>(newOrderDTO); 
+            //automappar objektet newOrderDTO till newOrder.
             newOrder.Created = DateTime.Now; 
-            newOrder.CustomerId = cust.Id;
-            //newOrder.Customer = cust;
+            //skapar datum för order
+            newOrder.CustomerId = cust.Id; 
+            //lägger till Id:t från cust i newOrders CustomerId.
+            newOrder.OrderRows = new List<OrderRow>(); 
+            //skapar en ny lista i newOrders property OrderRows
 
-             _context.Orders.Add(newOrder);
-            await _context.SaveChangesAsync();
+             _context.Orders.Add(newOrder); 
+            //sparar newOrder
+            await _context.SaveChangesAsync(); 
+            //lägger till newOrder i DB
+            
+            OrderDTO newOrderD = _mapper.Map<OrderDTO>(newOrder); 
+            //automappar objektet newOrder till newOrderD
+            newOrderD.CustomerDTO = custD; 
+            //lägger till objektet custD som newOrderD's CustomerDTO
 
-            OrderDTO newOrderD = _mapper.Map<OrderDTO>(newOrder);
-            newOrderD.CustomerDTO = custD;
+            List<OrderRow> or = await CreateOrderRow(newOrderDTO.OrderRows, newOrder.Id); 
+            //anropar metoden som skapar en lista med orderrows, skickar in vårt orderId
 
-            return CreatedAtAction("CreateOrder", newOrderD);
+            List<OrderRowDTO> orderRowD = _mapper.Map<List<OrderRowDTO>>(or); 
+            //automappar listan or till orderRowD
+            newOrderD.OrderRows = orderRowD; 
+            //ger newOrderD's propery OrderRows värdet av orderRowD
+
+            return CreatedAtAction("CreateOrder", newOrderD); 
+            //returnerar objektet newOrderD
+        }
+
+        public async Task<List<OrderRow>> CreateOrderRow(ICollection<OrderRowDTO> newOrderRowDTO, int orderId) 
+        {
+            List<OrderRow> newlyCreatedOrderRows = new List<OrderRow>(); 
+            //skapar en lista med datatypen OrderRow
+
+            foreach(OrderRowDTO orDto in newOrderRowDTO) {
+                //skapar en loop som går igenom varje objekt av datatypen OrderRowDTO i newOrderRowDTO 
+                OrderRow newOrderRow = new OrderRow()
+                //skapar en ny instans av OrderRow
+                {
+                    OrderId = orderId,
+                    //lägger till orderId som vi skickade till metoden genom anropet, i OrderId propertyn i OrderRow
+                    ProductId = orDto.ProductId
+                    //lägger till ProductId av produkter som skickas in
+                };
+
+                _context.OrderRows.Add(newOrderRow);
+                //sparar newOrderRow
+                await _context.SaveChangesAsync();
+                //lägger till ändringarna i DB
+                newlyCreatedOrderRows.Add(newOrderRow);
+                //lägger till en newOrderRow i listan newlyCreatedOrderRows
+            }
+
+            return newlyCreatedOrderRows;
         }
 
         public async Task<Customer>CreateCustomer(CustomerDTO newCustomerDTO) 
