@@ -37,12 +37,12 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             .WithMany(c=> c.Orders);
 
         //CUSTOMER-SEEDS
-        Customer c1 = new Customer {Id = 1, Name="Philip Sidlo", Address="Fridensborgsvägen 161", ZipCode=17062, City="Solna"};
-        Customer c2 = new Customer {Id = 2, Name="Arja Halkola", Address="Betongvägen 9", ZipCode=74633, City="Bålsta"};
-        Customer c3 = new Customer {Id = 3, Name="Jessica Persson", Address="Brushanevägen 26", ZipCode=12345, City="Bro"};
-        Customer c4 = new Customer {Id = 4, Name="Izabelle Persson", Address="Gamlaekenvägen 89", ZipCode=17062, City="Örsundsbro"};
-        Customer c5 = new Customer {Id = 5, Name="Anni Halkola", Address="Stenvägen 20", ZipCode=77733, City="Smedjebacken"};
-        Customer c6 = new Customer {Id = 6, Name="Rauno Halkola", Address="Lustikullsvägen 20", ZipCode=77712, City="Ludvika"};
+        Customer c1 = new Customer {Id = 1, Name="Philip Sidlo", Address="Fridensborgsvägen 161", ZipCode="17062", City="Solna"};
+        Customer c2 = new Customer {Id = 2, Name="Arja Halkola", Address="Betongvägen 9", ZipCode="17062", City="Bålsta"};
+        Customer c3 = new Customer {Id = 3, Name="Jessica Persson", Address="Brushanevägen 26", ZipCode="17062", City="Bro"};
+        Customer c4 = new Customer {Id = 4, Name="Izabelle Persson", Address="Gamlaekenvägen 89", ZipCode="17062", City="Örsundsbro"};
+        Customer c5 = new Customer {Id = 5, Name="Anni Halkola", Address="Stenvägen 20", ZipCode="17062", City="Smedjebacken"};
+        Customer c6 = new Customer {Id = 6, Name="Rauno Halkola", Address="Lustikullsvägen 20", ZipCode="17062", City="Ludvika"};
         modelBuilder.Entity<Customer>().HasData(c1, c2, c3, c4, c5, c6);
 
         //PRODUCT-SEEDS

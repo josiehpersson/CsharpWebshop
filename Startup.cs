@@ -32,7 +32,7 @@ namespace dotnetwebshop
             options.AddPolicy(corsPolicyName,builder => {
             builder
                 .WithOrigins("https://localhost:3001","http://localhost:3000") //accepted URL's
-                .WithMethods("GET","POST"); //accepted methods
+                .WithMethods("*"); //accepted methods
             });
             });
 
