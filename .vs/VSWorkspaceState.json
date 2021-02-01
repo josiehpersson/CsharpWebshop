@@ -8,6 +8,6 @@
     "\\Models",
     "\\Models\\DTOs"
   ],
-  "SelectedNode": "\\Models\\DTOs\\OrderRowDTO.cs",
+  "SelectedNode": "\\Contexts\\ProductContext.cs",
   "PreviewInSolutionExplorer": false
 }

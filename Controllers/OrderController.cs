@@ -84,6 +84,14 @@ namespace dotnetwebshop.Controllers
             newOrderD.OrderRows = orderRowD; 
             //ger newOrderD's propery OrderRows värdet av orderRowD
 
+            int sum = 0;
+            foreach(OrderRow orderrow in newOrder.OrderRows) {
+            int pricetag = (await _context.Products.FirstAsync(prod => prod.Id == orderrow.ProductId)).Price;
+            sum = sum + pricetag;
+            }
+            newOrderD.TotalPrice = sum;
+            await _context.SaveChangesAsync();
+
             return CreatedAtAction("CreateOrder", newOrderD); 
             //returnerar objektet newOrderD
         }
