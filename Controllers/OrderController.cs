@@ -96,7 +96,7 @@ namespace dotnetwebshop.Controllers
             //returnerar objektet newOrderD
         }
 
-        public async Task<List<OrderRow>> CreateOrderRow(ICollection<OrderRowDTO> newOrderRowDTO, int orderId) 
+        private async Task<List<OrderRow>> CreateOrderRow(ICollection<OrderRowDTO> newOrderRowDTO, int orderId) 
         {
             List<OrderRow> newlyCreatedOrderRows = new List<OrderRow>(); 
             //skapar en lista med datatypen OrderRow
@@ -123,7 +123,7 @@ namespace dotnetwebshop.Controllers
             return newlyCreatedOrderRows;
         }
 
-        public async Task<Customer>CreateCustomer(CustomerDTO newCustomerDTO) 
+        private async Task<Customer>CreateCustomer(CustomerDTO newCustomerDTO) 
         {
         Customer newCustomer = new Customer() 
         {
