@@ -29,7 +29,7 @@ namespace dotnetwebshop.Controllers
 
             return Ok(orderRowDTOs);
         }
-
+        /*
         [HttpPost]
         public async Task<ActionResult> CreateOrderRow(OrderRowDTO newOrderRowDTO)
         {
@@ -40,5 +40,6 @@ namespace dotnetwebshop.Controllers
 
             return CreatedAtAction("CreateOrderRow", newOrderRow);
         }
+        */
     }
 }

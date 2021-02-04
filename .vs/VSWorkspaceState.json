@@ -8,6 +8,6 @@
     "\\Models",
     "\\Models\\DTOs"
   ],
-  "SelectedNode": "\\Models\\DTOs\\OrderRowDTO.cs",
+  "SelectedNode": "\\Controllers\\CustomerController.cs",
   "PreviewInSolutionExplorer": false
 }
